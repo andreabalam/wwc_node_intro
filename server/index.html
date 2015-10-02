@@ -1,0 +1,92 @@
+<html>
+<!--Calendar example WWC-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calendario</title>
+	<script type="text/javascript" src="lib/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="lib/js/calendar.js"></script>
+	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/css/style.css">
+</head>
+<body>
+	<div>
+		<header>
+			<div>
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav">
+				        <li class="active"><a href="#">Hoy<span class="sr-only">(current)</span></a></li>
+				        <li><a href="#">Semana</a></li>
+				        <li><a href="#">Mes</a></li>
+				      </ul>
+				    </div>
+				  </div>
+				</nav>
+			</div>
+		</header>
+		<main class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<h2>Qu&eacute; haremos hoy&quest;</h2>
+				</div>
+				<div class="col-md-1">
+					<button title="M&aacute;s actividades" class="btn btn-info more" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i></button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<ul class="list-group todo-list"> </ul>
+				</div>
+				<div class="col-md-3">
+					<h3>Usuarios conectados:</h3>
+					<h1 id="current-users"></h1>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<ul>
+				<li><a href="#">T&eacute;rminos y condiciones</a></li>
+				<li><a href="#">Contacto: andrea.balam@gmail.com</a></li>
+			</ul>
+		</footer>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        	<span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Hoy voy a ...</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<form class="form-horizontal">
+			  	<div class="form-group">
+				    <label for="evento" class="col-sm-2 control-label">Evento</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="evento" name="evento" placeholder="planear mi d&iacute;a" required>
+				    </div>
+			  	</div>
+			  	<div class="form-group">
+				    <label for="hora" class="col-sm-2 control-label">Hora</label>
+				    <div class="col-sm-10">
+				      <input type="time" class="form-control" id="hora" name="hora" value="08:00:00" required>
+				    </div>
+			  	</div>
+			</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	        <button type="button" class="btn btn-primary" onclick="guardarEvento();">Guardar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>
